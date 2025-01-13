@@ -13,3 +13,17 @@ export interface APIResponseModel{
     result:  boolean,
     data: any
 }
+
+export interface Welcome4 {
+    clientId:          number;
+    contactPersonName: string;
+    companyName:       string;
+    address:           string;
+    city:              string;
+    pincode:           string;
+    state:             string;
+    EmployeeStrength:  number;
+    gstNo:             string;
+    contactNo:         string;
+    regNo:             string;
+}
