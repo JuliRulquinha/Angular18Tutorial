@@ -14,16 +14,11 @@ export interface APIResponseModel{
     data: any
 }
 
-export interface Welcome4 {
-    clientId:          number;
-    contactPersonName: string;
-    companyName:       string;
-    address:           string;
-    city:              string;
-    pincode:           string;
-    state:             string;
-    EmployeeStrength:  number;
-    gstNo:             string;
-    contactNo:         string;
-    regNo:             string;
+export interface IEmployee{
+    empName: string,
+    empId: number,
+    empCode: string,
+    empEmailId: string,
+    empDesignation: string,
+    role: string
 }
