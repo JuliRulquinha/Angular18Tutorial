@@ -59,12 +59,12 @@
 
                     <div class="col-6">
                         <label>Start Date</label>
-                        <input type="text" formControlName="startDate" class="form-control">
+                        <input type="date" formControlName="startDate" class="form-control">
                     </div>
 
                     <div class="col-6">
                         <label>Expected End Date</label>
-                        <input type="text" formControlName="expectedEndDate" class="form-control">
+                        <input type="date" formControlName="expectedEndDate" class="form-control">
                     </div>
 
                     <div class="col-6">
@@ -102,13 +102,19 @@
                         <label>Select Client</label>
                         <select formControlName="clientId" class="form-control">
                             <option value="">Select Client</option>
+                            @for (item of clientList; track $index) {
+                                <option [value]="item.clientId"> {{item.companyName}}</option>
+                            }
                         </select>
                     </div>
 
                     <div class="col-6">
                         <label>Lead by</label>
                         <select formControlName="leadByEmpId" class="form-control">
-                            <option>Select Employee</option>
+                            <option value="">Select Employee</option>
+                            @for (item of employeeList; track $index) {
+                                <option [value]="item.empId"> {{item.empName}} - {{item.empCode}}</option>
+                            }
                         </select>
                     </div>
 

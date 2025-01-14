@@ -35,7 +35,7 @@ export class ClientProjectComponent implements OnInit{
   
   ngOnInit(): void {
     this.getAllClients();
-    this.getAllClients();
+    this.getAllEmployee();
   }
 
   getAllEmployee() {
