@@ -51,9 +51,19 @@
                 <form [formGroup]="projectForm">
                     <div class="row">
                     <div class="col-6">
-                        <label>Project name</label>
+                        <label>Project name *</label>
                         <input type="text" formControlName="projectName" class="form-control">
-                       
+                       @if(projectForm.controls['projectName'].touched){
+                            <div class="text-danger">
+                                @if (projectForm.controls['projectName'].errors?.['required']) {
+                                    <span>Name is required</span>
+                                }
+                                @if (projectForm.controls['projectName'].errors?.['minlength']) {
+                                    <span>Min length is 4</span>
+                                }
+                            </div>
+                       }
+                        
                             
                     </div>
 
@@ -128,7 +138,7 @@
                     </div>
 
                     <div class="col-6 text-center">
-                        <button class="btn btn-success" (click)="onSaveProject()">
+                        <button class="btn btn-success" [disabled]="projectForm.invalid" (click)="onSaveProject()">
                             Save Project
                         </button>
                     </div>
