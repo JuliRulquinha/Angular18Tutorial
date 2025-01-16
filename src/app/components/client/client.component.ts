@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, UpperCasePipe, DatePipe, JsonPipe, AsyncPipe],
+  imports: [FormsModule, UpperCasePipe, DatePipe, AsyncPipe],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })

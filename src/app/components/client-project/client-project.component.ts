@@ -1,12 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
-import { APIResponseModel, IEmployee } from '../../model/class/interface/role';
+import { APIResponseModel, ClientProject, IEmployee } from '../../model/class/interface/role';
 import { Client } from '../../model/class/Client';
+import { DatePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client-project',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
@@ -32,10 +33,27 @@ export class ClientProjectComponent implements OnInit{
   clientService = inject(ClientService);
   employeeList: IEmployee[] = [];
   clientList: Client[] = [];
+
+
+  firstName = signal('Angular 18');
+  projectList = signal<ClientProject[]>([]);
+  
   
   ngOnInit(): void {
     this.getAllClients();
     this.getAllEmployee();
+    this.getAllClientProjects();
+  }
+
+  getAllClientProjects(){
+    debugger;
+    this.clientService.getAllClientProjects().subscribe((res:APIResponseModel)=>{
+      this.projectList.set(res.data);
+    })
+  }
+
+  changeFName(newName: string){
+    this.firstName.set(newName);
   }
 
   getAllEmployee() {

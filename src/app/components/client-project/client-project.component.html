@@ -1,9 +1,12 @@
+
 <div class="row">
     <div class="col-8">
         <div class="card">
         <div class="card-header bg-success">
-            Client List
+            Client List - {{firstName()}}
+            <button class="btn btn-danger" (click)="changeFName('ReactJs')">Change F name</button>
         </div>
+        
 
         <div class="card-body"> 
             <div class="row">
@@ -20,20 +23,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- @for (item of clientList; track $index) {
-                                <tr>
-                                    <td>  {{$index+1}} </td>
-                                    <td> {{item.companyName}} </td>
-                                    <td> {{item.contactPersonName}} </td>
-                                    <td> {{item.contactNo}} </td>
-                                    <td> {{item.city}} </td>
-                                    <td>
-                                        <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
-                                        <button class="btn btn-danger" (click)="onDelete(item.clientId)">Delete</button>
-                                    </td>
-                                </tr> 
-                            }
-                            -->
+                            
+                                @for (item of projectList(); track $index) {
+
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.clientName}}</td>
+                                        <td>{{item.projectName}}</td>
+                                        <td>{{item.empName}}</td>
+                                        <td>{{item.startDate | date: 'dd-MM-yyyy'}}</td>
+                                        <td>
+                                            <button class="btn btn-primary">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                        
+                                    </tr>
+                                }
+                        
+                            
                         </tbody>
                     </table>
                 </div>
@@ -45,7 +52,7 @@
     <div class="col-4">
         <div class="card">
             <div class="card-header bg-success">
-                New Client
+                New Client 
             </div>
             <div class="card-body">
                 <form [formGroup]="projectForm">
