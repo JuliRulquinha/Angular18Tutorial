@@ -5,11 +5,13 @@ import { ClientService } from '../../services/client.service';
 import { APIResponseModel } from '../../model/class/interface/role';
 import { AsyncPipe, DatePipe, JsonPipe, UpperCasePipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { AlertComponent } from '../../reusableComponent/alert/alert.component';
+import { MyButtonComponent } from "../../reusableComponent/my-button/my-button.component";
 
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, UpperCasePipe, DatePipe, AsyncPipe],
+  imports: [FormsModule, UpperCasePipe, DatePipe, AlertComponent, MyButtonComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })
@@ -34,7 +36,7 @@ export class ClientComponent implements OnInit{
     })
   }
 
-  onSaveClient(){
+  onSaveClient(data: string){
     debugger;
     this.clientService.addUpdate(this.clientObj).subscribe((res:APIResponseModel)=>{
       if(res.result){
